@@ -1,0 +1,26 @@
+{
+  "name": "tracknext",
+  "version": "1.0.0",
+  "description": "TrackNext student opportunity portal backend + frontend",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "tracknext",
+    "opportunity",
+    "frontend",
+    "express"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.9.2"
+  }
+}

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: tracknext
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_DB_NAME
+        value: tracknext
+      - key: MONGODB_REQUIRED
+        value: "true"
+      - key: MONGODB_URI
+        sync: false

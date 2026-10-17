@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrackNext | Student Opportunity Portal</title>
+    <meta
+      name="description"
+      content="TrackNext helps students discover internships, hackathons, workshops, courses, jobs, scholarships, and other opportunities."
+    />
+    <link rel="alternate" type="application/rss+xml" title="TrackNext RSS Feed" href="/rss.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <a href="#home" class="brand" aria-label="TrackNext homepage">
+            <img
+              src="assets/tracknext-logo.png"
+              alt="TrackNext logo"
+              class="brand-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+            />
+            <span class="brand-fallback" aria-hidden="true">TN</span>
+            <span class="brand-name">TrackNext</span>
+          </a>
+        </div>
+
+        <label class="searchbar" aria-label="Search opportunities">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.5 3a7.5 7.5 0 015.94 12.56l4.25 4.25 1.41-1.41-4.25-4.25A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z" />
+          </svg>
+          <input id="topSearchInput" type="search" placeholder="Search opportunities..." />
+        </label>
+
+        <div class="topbar-actions">
+          <button class="icon-button" type="button" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a5 5 0 015 5v3.59l1.7 3.4A1 1 0 0117.76 16H6.24a1 1 0 01-.94-1.01L7 10.59V7a5 5 0 015-5zm0 20a3 3 0 01-2.82-2h5.64A3 3 0 0112 22z" />
+            </svg>
+          </button>
+          <button class="icon-button saved-shortcut" id="savedShortcut" type="button" aria-label="Saved opportunities">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 3.5A2.5 2.5 0 018.5 1h7A2.5 2.5 0 0118 3.5V21l-6-3.7L6 21V3.5zm2.5-.5a.5.5 0 00-.5.5V16.7l4.5-2.78 4.5 2.78V3.5a.5.5 0 00-.5-.5h-7z" />
+            </svg>
+            <span class="saved-count" id="savedCount">0</span>
+          </button>
+          <button class="profile-button" type="button" aria-label="Student profile">
+            <span class="avatar">AS</span>
+            <span class="profile-meta">
+              <strong>Aria S.</strong>
+              <small>Student</small>
+            </span>
+          </button>
+        </div>
+
+        <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <div class="main-layout">
+        <aside class="sidebar" id="sidebar">
+          <nav class="sidebar-nav" aria-label="Main navigation">
+            <a href="#home" class="nav-item active">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1v-9.5z" /></svg>
+              <span>Home</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 016.5 5h11A2.5 2.5 0 0120 7.5v9A2.5 2.5 0 0117.5 19h-11A2.5 2.5 0 014 16.5v-9zm2.5-.5a.5.5 0 00-.5.5v9c0 .28.22.5.5.5h11a.5.5 0 00.5-.5v-9a.5.5 0 00-.5-.5h-11zm1.5 3h8v2h-8v-2zm0 4h6v2h-6v-2z" /></svg>
+              <span>Internships</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zm0 2.3L5.5 8v7.7L12 18.7l6.5-3v-7.7L12 5.3zm-1 3.2h2v5h-2v-5zm0 6h2v2h-2v-2z" /></svg>
+              <span>Hackathons</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm2 3h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" /></svg>
+              <span>Workshops</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-1 4H6v10h12V7zm-7 2h2v6h-2V9zm-3 2h2v4H8v-4zm7 0h2v4h-2v-4z" /></svg>
+              <span>Tech Events</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4.5v7L12 22 4 13.5v-7L12 2zm0 2.2L6 7v5.7l6 3.3 6-3.3V7l-6-2.8zm-1 3.3h2v4h-2V7.5zm0 5h2v2h-2v-2z" /></svg>
+              <span>Competitions</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v13A2.5 2.5 0 0117.5 21h-11A2.5 2.5 0 014 18.5v-13zm2.5-.5a.5.5 0 00-.5.5v13c0 .28.22.5.5.5h11a.5.5 0 00.5-.5v-13a.5.5 0 00-.5-.5h-11zm2 2h7v2h-7V7zm0 4h9v2h-9v-2zm0 4h6v2h-6v-2z" /></svg>
+              <span>Courses</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a2 2 0 012 2v18l-7-3-7 3V4a2 2 0 012-2zm0 2v13.35l5-2.14 5 2.14V4H7zm2 3h6v2H9V7zm0 4h6v2H9v-2z" /></svg>
+              <span>Jobs</span>
+            </a>
+            <a href="#featured-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c3.5 0 6.5 2.9 6.5 6.5 0 3.3-2.4 6.2-5.5 7.1V20h2.5v2H8.5v-2H11v-3.9C8.1 15.2 5.5 12.3 5.5 9c0-3.6 3-6.5 6.5-6.5zm0 2a4.5 4.5 0 00-4.5 4.5c0 2.7 2 4.6 4.5 4.6s4.5-1.9 4.5-4.6A4.5 4.5 0 0012 5zm0 3.5h2v2h-2v-2z" /></svg>
+              <span>Scholarships</span>
+            </a>
+            <a href="#saved-opportunities" class="nav-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5A2.5 2.5 0 018.5 1h7A2.5 2.5 0 0118 3.5V21l-6-3.7L6 21V3.5zm2.5-.5a.5.5 0 00-.5.5V16.7l4.5-2.78 4.5 2.78V3.5a.5.5 0 00-.5-.5h-7z" /></svg>
+              <span>Saved Opportunities</span>
+            </a>
+          </nav>
+        </aside>
+
+        <main class="main-content">
+          <section class="hero-section" id="home">
+            <div class="hero-copy">
+              <p class="eyebrow">Student Opportunity Portal</p>
+              <h1>Find Opportunities. Build Your Future.</h1>
+              <p class="subtitle">
+                Discover internships, hackathons, workshops, competitions, courses, and career opportunities designed to help students grow.
+              </p>
+              <div class="hero-actions">
+                <a href="#featured-opportunities" class="primary-button hero-button">Explore Opportunities</a>
+                <button type="button" class="secondary-button hero-button" id="createProfileBtn">Create Profile</button>
+              </div>
+              <div class="hero-stats">
+                <div>
+                  <strong>350+</strong>
+                  <span>Live openings</span>
+                </div>
+                <div>
+                  <strong>120+</strong>
+                  <span>Campus events</span>
+                </div>
+                <div>
+                  <strong>24/7</strong>
+                  <span>Career resources</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Career growth illustration">
+              <div class="visual-shell">
+                <div class="floating-card card-one">
+                  <span class="mini-label">Career Track</span>
+                  <strong>Frontend Dev</strong>
+                  <small>3 matched roles</small>
+                </div>
+                <div class="floating-card card-two">
+                  <span class="mini-label">Learning</span>
+                  <strong>AI Workshop</strong>
+                  <small>30 spots left</small>
+                </div>
+                <div class="hero-graphic">
+                  <div class="device-screen">
+                    <div class="screen-header"></div>
+                    <div class="screen-body">
+                      <span class="line short"></span>
+                      <span class="line medium"></span>
+                      <span class="line long"></span>
+                      <div class="graph-bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="circle pulse-one"></div>
+                  <div class="circle pulse-two"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="filters-panel" aria-label="Opportunity filters">
+            <form id="filterForm" class="filter-form">
+              <div class="filter-field">
+                <label for="searchKeyword">Search keyword</label>
+                <input id="searchKeyword" type="text" placeholder="e.g. developer, AI" />
+              </div>
+
+              <div class="filter-field">
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter">
+                  <option value="all">All categories</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Hackathon">Hackathon</option>
+                  <option value="Workshop">Workshop</option>
+                  <option value="Technical Event">Technical Event</option>
+                  <option value="Competition">Competition</option>
+                  <option value="Course">Course</option>
+                  <option value="Job">Job</option>
+                  <option value="Scholarship">Scholarship</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="locationFilter">Location</label>
+                <select id="locationFilter">
+                  <option value="all">Any location</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Remote">Remote</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Online">Online</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="dateFilter">Opportunity date</label>
+                <input id="dateFilter" type="date" />
+              </div>
+
+              <div class="filter-field">
+                <label for="maxPriceFilter">Maximum price</label>
+                <input id="maxPriceFilter" type="number" min="0" step="500" placeholder="₹5000" />
+              </div>
+
+              <div class="filter-field format-field">
+                <label>Mode</label>
+                <div class="mode-select">
+                  <label><input type="radio" name="formatFilter" value="all" checked /> All</label>
+                  <label><input type="radio" name="formatFilter" value="Online" /> Online</label>
+                  <label><input type="radio" name="formatFilter" value="Offline" /> Offline</label>
+                </div>
+              </div>
+
+              <div class="filter-actions">
+                <button type="submit" class="primary-button">Apply Filters</button>
+                <button type="button" class="secondary-button clear-button" id="clearFilters">Clear Filters</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="content-section" id="categories">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Browse</p>
+                <h2>Opportunity Categories</h2>
+              </div>
+            </div>
+            <div class="category-grid" id="categoryCards">
+              <button type="button" class="category-card active" data-category="all">
+                <span class="category-icon">◆</span>
+                <span class="category-name">All</span>
+                <small>8 available</small>
+              </button>
+              <button type="button" class="category-card" data-category="Internship">
+                <span class="category-icon">⌂</span>
+                <span class="category-name">Internships</span>
+                <small>2 openings</small>
+              </button>
+              <button type="button" class="category-card" data-category="Hackathon">
+                <span class="category-icon">✦</span>
+                <span class="category-name">Hackathons</span>
+                <small>2 events</small>
+              </button>
+              <button type="button" class="category-card" data-category="Workshop">
+                <span class="category-icon">✎</span>
+                <span class="category-name">Workshops</span>
+                <small>1 session</small>
+              </button>
+              <button type="button" class="category-card" data-category="Technical Event">
+                <span class="category-icon">◈</span>
+                <span class="category-name">Technical Events</span>
+                <small>2 participations</small>
+              </button>
+              <button type="button" class="category-card" data-category="Competition">
+                <span class="category-icon">◍</span>
+                <span class="category-name">Competitions</span>
+                <small>1 challenge</small>
+              </button>
+              <button type="button" class="category-card" data-category="Course">
+                <span class="category-icon">◐</span>
+                <span class="category-name">Courses</span>
+                <small>1 learning track</small>
+              </button>
+              <button type="button" class="category-card" data-category="Job">
+                <span class="category-icon">◫</span>
+                <span class="category-name">Jobs</span>
+                <small>1 opening</small>
+              </button>
+              <button type="button" class="category-card" data-category="Scholarship">
+                <span class="category-icon">★</span>
+                <span class="category-name">Scholarships</span>
+                <small>1 award</small>
+              </button>
+            </div>
+          </section>
+
+          <section class="content-section" id="featured-opportunities">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Trending</p>
+                <h2>Featured Opportunities</h2>
+              </div>
+              <a href="#featured-opportunities" class="text-link">View all</a>
+            </div>
+            <div id="featuredGrid" class="opportunity-grid" aria-live="polite"></div>
+          </section>
+
+          <section class="content-section split-section">
+            <div class="content-panel" id="latest-opportunities">
+              <div class="section-header compact">
+                <div>
+                  <p class="eyebrow">Fresh updates</p>
+                  <h2>Latest Opportunities</h2>
+                </div>
+              </div>
+              <div id="latestList" class="latest-list"></div>
+            </div>
+
+            <div class="content-panel" id="upcoming-events">
+              <div class="section-header compact">
+                <div>
+                  <p class="eyebrow">Calendar</p>
+                  <h2>Upcoming Events</h2>
+                </div>
+              </div>
+              <div class="event-list">
+                <article class="event-item">
+                  <div class="event-date">
+                    <span>Oct</span>
+                    <strong>08</strong>
+                  </div>
+                  <div class="event-copy">
+                    <h3>Microsoft Office Chennai AI Community Event</h3>
+                    <p>Technical Event</p>
+                    <small>Chennai • Online</small>
+                  </div>
+                  <button class="text-button" type="button">View Details</button>
+                </article>
+                <article class="event-item">
+                  <div class="event-date">
+                    <span>Oct</span>
+                    <strong>12</strong>
+                  </div>
+                  <div class="event-copy">
+                    <h3>GenAI to Agentic AI Workshop</h3>
+                    <p>Workshop</p>
+                    <small>Remote • Online</small>
+                  </div>
+                  <button class="text-button" type="button">View Details</button>
+                </article>
+                <article class="event-item">
+                  <div class="event-date">
+                    <span>Oct</span>
+                    <strong>18</strong>
+                  </div>
+                  <div class="event-copy">
+                    <h3>Cyber Security Quiz &amp; Debug</h3>
+                    <p>Competition</p>
+                    <small>Hybrid • Bengaluru</small>
+                  </div>
+                  <button class="text-button" type="button">View Details</button>
+                </article>
+                <article class="event-item">
+                  <div class="event-date">
+                    <span>Oct</span>
+                    <strong>20</strong>
+                  </div>
+                  <div class="event-copy">
+                    <h3>Build for Bharat Tech Event</h3>
+                    <p>Hackathon</p>
+                    <small>Hyderabad • Offline</small>
+                  </div>
+                  <button class="text-button" type="button">View Details</button>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section" id="quick-links">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Resources</p>
+                <h2>Student Quick Links</h2>
+              </div>
+            </div>
+            <div class="quick-links-grid">
+              <a href="#featured-opportunities" class="quick-link-card">
+                <span class="quick-icon">▣</span>
+                <h3>Resume Builder</h3>
+                <small>Polish your profile</small>
+              </a>
+              <a href="#featured-opportunities" class="quick-link-card">
+                <span class="quick-icon">★</span>
+                <h3>Scholarships</h3>
+                <small>Funding opportunities</small>
+              </a>
+              <a href="#featured-opportunities" class="quick-link-card">
+                <span class="quick-icon">◫</span>
+                <h3>Government Jobs</h3>
+                <small>Public sector roles</small>
+              </a>
+              <a href="#featured-opportunities" class="quick-link-card">
+                <span class="quick-icon">◌</span>
+                <h3>Career Guidance</h3>
+                <small>Roadmaps and advice</small>
+              </a>
+              <a href="#featured-opportunities" class="quick-link-card">
+                <span class="quick-icon">▤</span>
+                <h3>Free Courses</h3>
+                <small>Upskill without cost</small>
+              </a>
+              <a href="#featured-opportunities" class="quick-link-card">
+                <span class="quick-icon">◍</span>
+                <h3>Placement Preparation</h3>
+                <small>Interview and test prep</small>
+              </a>
+            </div>
+          </section>
+
+          <section class="content-section" id="saved-opportunities">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Your list</p>
+                <h2>Saved Opportunities</h2>
+              </div>
+            </div>
+            <div id="savedList" class="saved-list" aria-live="polite"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-footer">
+            <img src="assets/tracknext-logo.png" alt="TrackNext logo" class="brand-icon" onerror="this.style.display='none';" />
+            <span>TrackNext</span>
+          </div>
+          <p>Discover. Apply. Grow.</p>
+        </div>
+
+        <div>
+          <h4>About</h4>
+          <ul>
+            <li><a href="#home">Who we are</a></li>
+            <li><a href="#featured-opportunities">Discover opportunities</a></li>
+            <li><a href="#quick-links">Student resources</a></li>
+            <li><a href="/rss.xml">RSS Feed</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="#featured-opportunities">Opportunities</a></li>
+            <li><a href="#saved-opportunities">Saved items</a></li>
+            <li><a href="#upcoming-events">Upcoming events</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">hello@tracknext.edu</a></li>
+            <li><a href="#">Campus support</a></li>
+            <li><a href="#">Student help desk</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Social</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop hidden" id="detailsModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" aria-label="Close details">×</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
